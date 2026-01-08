@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>todo app demo </title>
+        <title>adding how the form works in the webapp</title>
     </head>
     <body>
-        <h1><center>welcome {{name}}</center></h1>
-        <center>tasks to do : {{task_count}}</center>
+       <h1>this onw is a form with a ORM database</h1>
+       <form name="POST">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="enter new task" required>
+            <button type="submit">submit</button>
+        </form>
+        <ul>
+            {% for todo in todos %}
+            <li>
+                {{ todo.title }}
+                {% if todo.completed %}
+                     good
+                {% endif %}
+
+            </li>
+            {% empty %}
+            <li>NO tasks yet</li>
+            {% endfor %}
+        </ul>
 
     </body>
 </html>
